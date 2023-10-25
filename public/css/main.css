@@ -26,7 +26,13 @@ body {
   background: url(../img/pexels-photo-9934306.jpeg);
   background-size: cover;
   background-position: top;
+  background-repeat: no-repeat;
   position: relative;
+}
+@media (max-width: 37.5em) {
+  body {
+    height: 100%;
+  }
 }
 body::-webkit-scrollbar {
   display: none;

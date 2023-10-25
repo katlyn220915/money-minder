@@ -48,6 +48,10 @@ body {
   background-position: top;
   background-repeat: no-repeat;
 
+  @include respond(phone) {
+    height: 100%;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }
