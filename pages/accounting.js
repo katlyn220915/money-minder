@@ -31,7 +31,7 @@ function AccountingPage() {
     <Layout>
       <Head>
         <title>開始記帳囉！</title>
-        <meta name="description" content="你今天記帳了吗？快快来記帳！" />
+        <meta name="description" content="你今天記帳了吗？快快來記帳！" />
         <link rel="icon" href="/img/favicon.png"></link>
       </Head>
       <main>
