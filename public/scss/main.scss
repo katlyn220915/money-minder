@@ -47,6 +47,7 @@ body {
   // backdrop-filter: blur(1px);
   background-position: top;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
   @include respond(phone) {
     // height: 100%;
