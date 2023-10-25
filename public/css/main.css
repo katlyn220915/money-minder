@@ -1,0 +1,175 @@
+* {
+  list-style: none;
+}
+*, *:after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+* ::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Noto Sans TC, sans-serif;
+  overflow: -moz-hidden-unscrollable;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+  -ms-overflow-style: none;
+  overflow: auto;
+  height: 100vh;
+  background: url(../img/pexels-photo-9934306.jpeg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (max-width: 37.5em) {
+  .container {
+    text-align: center;
+  }
+}
+
+.container-sm {
+  max-width: 60rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.heading__primary {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.heading__secondary {
+  font-size: 4rem;
+}
+
+.nav {
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #023047;
+  color: #fff;
+}
+
+.c-box {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+}
+.btn__cta {
+  background: #ffb703;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  box-shadow: -2px 3px 7px 1px #cc9202;
+}
+.btn__cta:hover {
+  background-color: #e6a503;
+}
+.btn__cta:active {
+  box-shadow: -1px 2px 5px 1px #cc9202;
+  transform: translate(-0.1rem, -0.1rem);
+}
+.btn__action {
+  padding: 0.5rem;
+  background-color: #ffb703;
+  transition: all 0.3s;
+}
+.btn__action:hover {
+  box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.btn__action:active {
+  transform: translate(0.1rem, 0.1rem);
+}
+
+.section__hero {
+  padding: 4rem 0;
+  height: 35rem;
+}
+.section__hero .hero__description {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.section__accounting {
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: 0.1rem solid #ddd;
+}
+.section__accounting .accounting__form__block {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+@media (max-width: 37.5em) {
+  .section__accounting .accounting__form__block {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.section__accounting .accounting__form__block .input-group {
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #aaa;
+}
+.section__accounting .accounting__form__block .input-group:focus {
+  outline: none;
+}
+.section__accounting .accounting__form__block .input-group-empty {
+  border: 0.2rem solid red;
+}
+.section__accounting .accounting__form__block .input-group-success {
+  border: 0.2rem solid green;
+}
+
+.section__bill-list {
+  padding: 4rem 0;
+  min-height: 50rem;
+}
+.section__bill-list .bill-list {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+}
+.section__bill-list .bill-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+.section__bill-list .bill-list__item__bill-expense {
+  color: red;
+}
+.section__bill-list .bill-list__item__bill-income {
+  color: green;
+}
+.section__bill-list .bill-list__item__bill-income::before {
+  content: "-";
+  opacity: 0;
+}
+.section__bill-list .bill-list__item__description {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/*# sourceMappingURL=main.css.map */
