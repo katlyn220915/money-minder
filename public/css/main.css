@@ -29,11 +29,6 @@ body {
   background-repeat: no-repeat;
   position: relative;
 }
-@media (max-width: 37.5em) {
-  body {
-    height: 100%;
-  }
-}
 body::-webkit-scrollbar {
   display: none;
 }
@@ -43,7 +38,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   padding: 0 1rem;
 }
-@media (max-width: 37.5em) {
+@media (max-width: 38.125em) {
   .container {
     text-align: center;
   }
@@ -73,7 +68,7 @@ body::-webkit-scrollbar {
 
 .c-box {
   text-align: center;
-  margin-top: 4rem;
+  margin: 4rem 0;
 }
 
 .btn {
@@ -126,7 +121,7 @@ body::-webkit-scrollbar {
   justify-content: center;
   gap: 1rem;
 }
-@media (max-width: 37.5em) {
+@media (max-width: 38.125em) {
   .section__accounting .accounting__form__block {
     flex-direction: column;
     gap: 1rem;
