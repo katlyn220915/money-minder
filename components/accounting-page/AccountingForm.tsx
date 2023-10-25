@@ -3,7 +3,6 @@
 import React from "react";
 import "../../public/css/main.css";
 import { useState } from "react";
-import { useAmp } from "next/amp";
 
 const AccountingForm = ({ onAddRecord }) => {
   const [expenseOrIncome, setExpenseOrIncome] = useState("expense");
@@ -11,9 +10,12 @@ const AccountingForm = ({ onAddRecord }) => {
   const [description, setDescription] = useState("");
   const [isInputClicked, setIsInputClicked] = useState(false);
 
-  const handleAddRecord = (e, bill) => {
+  const handleAddRecord = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    bill: any
+  ) => {
     e.preventDefault();
-    if (bill === "" || bill === 0 || description === "") return;
+    if (bill === "" || description === "") return;
     bill = expenseOrIncome === "expense" ? -bill : bill;
     onAddRecord({
       id: Date.now(),
@@ -30,14 +32,14 @@ const AccountingForm = ({ onAddRecord }) => {
     setIsInputClicked(true);
   };
 
-  let billInputClassName;
-  if (bill === 0 || bill === "" || bill === "0") {
+  let billInputClassName: string;
+  if (bill === "" || bill === "0") {
     billInputClassName = "input-group input-group-empty";
   } else {
     billInputClassName = "input-group input-group-success";
   }
 
-  let desInputClassName;
+  let desInputClassName: string;
   if (description === "" || description === null) {
     desInputClassName = "input-group input-group-empty";
   } else {

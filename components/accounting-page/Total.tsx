@@ -1,7 +1,11 @@
 import React from "react";
 import "../../public/css/main.css";
 
-const Total = ({ totalAmount }) => {
+type TotalProps = {
+  totalAmount: number;
+};
+
+const Total = ({ totalAmount }: TotalProps) => {
   return (
     <div className="container-sm">
       <span>小計：{totalAmount}</span>

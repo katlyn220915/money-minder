@@ -1,15 +1,14 @@
-"use client";
-
+import React from "react";
+import { useAmp } from "next/amp";
+import { useState } from "react";
+import Head from "next/head";
 import {
   ButtonBackhome,
   BillList,
   Total,
   SectionAccounting,
   Layout,
-} from "@/components";
-import { useAmp } from "next/amp";
-import { useState } from "react";
-import Head from "next/head";
+} from "../components/index";
 
 function AccountingPage() {
   const [list, setList] = useState([]);
