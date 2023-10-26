@@ -66,10 +66,13 @@ const AccountingForm: React.FC<AccountingFormProps> = ({ onAddRecord }) => {
         <input
           className={isInputClicked ? billInputClassName : "input-group"}
           placeholder="請輸入金額"
-          type="number"
+          type="text"
           value={bill}
           onChange={(e) => {
-            setBill(Number(e.target.value));
+            const inputValue = e.target.value;
+            if (/^\d*$/.test(inputValue)) {
+              setBill(Number(inputValue));
+            }
           }}
           onClick={handleInputClick}
           required
