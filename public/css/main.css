@@ -174,4 +174,8 @@ body::-webkit-scrollbar {
   text-align: left;
 }
 
+.hint {
+  padding-top: 1rem;
+}
+
 /*# sourceMappingURL=main.css.map */
