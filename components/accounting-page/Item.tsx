@@ -1,7 +1,13 @@
 import React from "react";
 import "../../public/css/main.css";
+import { ListItemProps } from "../../types";
 
-const Item = ({ id, bill, description, onDeleteItem }) => {
+const Item: React.FC<ListItemProps> = ({
+  id,
+  bill,
+  description,
+  onDeleteItem,
+}) => {
   return (
     <li className="bill-list__item">
       <span

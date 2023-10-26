@@ -1,28 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import "../../public/css/main.css";
-import { useState } from "react";
+import { AccountingFormProps } from "../../types";
 
-const AccountingForm = ({ onAddRecord }) => {
-  const [expenseOrIncome, setExpenseOrIncome] = useState("expense");
-  const [bill, setBill] = useState("");
-  const [description, setDescription] = useState("");
-  const [isInputClicked, setIsInputClicked] = useState(false);
+const AccountingForm: React.FC<AccountingFormProps> = ({ onAddRecord }) => {
+  const [expenseOrIncome, setExpenseOrIncome] = useState<string>("expense");
+  const [bill, setBill] = useState<number>(0);
+  const [description, setDescription] = useState<string>("");
+  const [isInputClicked, setIsInputClicked] = useState<boolean>(false);
 
   const handleAddRecord = (
     e: React.MouseEvent<HTMLButtonElement>,
-    bill: any
+    bill: number
   ) => {
     e.preventDefault();
-    if (bill === "" || description === "") return;
+    if (bill === 0 || description === "") return;
+    if (bill < 0) {
+      bill = Math.abs(bill);
+    }
+
     bill = expenseOrIncome === "expense" ? -bill : bill;
+
     onAddRecord({
       id: Date.now(),
       bill,
       description,
     });
-    setBill("");
+
+    setBill(0);
     setDescription("");
     setExpenseOrIncome("expense");
     setIsInputClicked(false);
@@ -33,7 +39,7 @@ const AccountingForm = ({ onAddRecord }) => {
   };
 
   let billInputClassName: string;
-  if (bill === "" || bill === "0") {
+  if (bill === 0) {
     billInputClassName = "input-group input-group-empty";
   } else {
     billInputClassName = "input-group input-group-success";
@@ -63,7 +69,7 @@ const AccountingForm = ({ onAddRecord }) => {
           type="number"
           value={bill}
           onChange={(e) => {
-            setBill(e.target.value);
+            setBill(Number(e.target.value));
           }}
           onClick={handleInputClick}
           required

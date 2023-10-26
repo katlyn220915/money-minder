@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import "../../public/css/main.css";
 
-const BtnStart = () => {
+const BtnStart: React.FC = () => {
   return (
     <div className="c-box">
       <Link href="/accounting">

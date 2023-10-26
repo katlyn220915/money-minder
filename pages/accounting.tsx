@@ -1,7 +1,7 @@
-import React from "react";
-import { useAmp } from "next/amp";
-import { useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
+import { ListItemProps } from "../types";
+
 import {
   ButtonBackhome,
   BillList,
@@ -10,16 +10,16 @@ import {
   Layout,
 } from "../components/index";
 
-function AccountingPage() {
-  const [list, setList] = useState([]);
+const AccountingPage: React.FC = () => {
+  const [list, setList] = useState<ListItemProps[]>([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  const handleAddRecord = (newItem) => {
+  const handleAddRecord = (newItem: ListItemProps) => {
     setList((prevList) => [...prevList, newItem]);
     setTotalAmount(totalAmount + Number(newItem.bill));
   };
 
-  const handleDeleteItem = (id, bill) => {
+  const handleDeleteItem = (id: number, bill: number) => {
     setList((preList) => preList.filter((list) => list.id !== id));
     if (totalAmount !== 0) {
       setTotalAmount(totalAmount - Number(bill));
@@ -41,6 +41,6 @@ function AccountingPage() {
       </main>
     </Layout>
   );
-}
+};
 
 export default AccountingPage;

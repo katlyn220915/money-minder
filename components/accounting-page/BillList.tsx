@@ -3,8 +3,9 @@
 import React from "react";
 import "../../public/css/main.css";
 import Item from "./Item";
+import { BillListProps } from "../../types";
 
-const BillList = ({ list, onDeleteItem }) => {
+const BillList: React.FC<BillListProps> = ({ list, onDeleteItem }) => {
   return (
     <section className="section__bill-list">
       <ul className="container-sm bill-list">

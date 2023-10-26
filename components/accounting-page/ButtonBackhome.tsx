@@ -3,8 +3,9 @@
 import React from "react";
 import Link from "next/link";
 import "../../public/css/main.css";
+import { ButtonBackhomeProps } from "../../types";
 
-const ButtonBackhome = ({ children }) => {
+const ButtonBackhome: React.FC<ButtonBackhomeProps> = ({ children }) => {
   return (
     <div className="c-box">
       <Link href="/">
