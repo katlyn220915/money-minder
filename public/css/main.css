@@ -55,9 +55,13 @@ body::-webkit-scrollbar {
 .heading__primary {
   font-size: 3rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 .heading__secondary {
   font-size: 4rem;
+}
+.heading__tertiary {
+  font-size: 2.5rem;
 }
 
 .nav {
@@ -65,6 +69,15 @@ body::-webkit-scrollbar {
   padding: 4rem 0;
   background-color: #023047;
   color: #fff;
+}
+.nav__btn {
+  display: inline-blick;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+  border: 0.1rem solid #fff;
+  margin-right: 1rem;
+  margin-top: 1rem;
 }
 
 .c-box {
@@ -76,31 +89,37 @@ body::-webkit-scrollbar {
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
+  background: #ffb703;
+}
+.btn:hover {
+  background-color: #e6a503;
+  box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.btn:active {
+  transform: translate(0.1rem, 0.1rem);
 }
 .btn__cta {
-  background: #ffb703;
   color: #fff;
   padding: 1.5rem 2rem;
   font-size: 2rem;
   box-shadow: -2px 3px 7px 1px #cc9202;
-}
-.btn__cta:hover {
-  background-color: #e6a503;
-}
-.btn__cta:active {
-  box-shadow: -1px 2px 5px 1px #cc9202;
-  transform: translate(-0.1rem, -0.1rem);
 }
 .btn__action {
   padding: 0.5rem;
   background-color: #ffb703;
   transition: all 0.3s;
 }
-.btn__action:hover {
-  box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.1);
+.btn__signin {
+  display: inline-block;
+  padding: 1rem 1.5rem;
 }
-.btn__action:active {
-  transform: translate(0.1rem, 0.1rem);
+.btn__switch {
+  padding: 1rem;
+  display: block;
+  cursor: pointer;
+}
+.btn__switch:hover {
+  text-decoration: underline;
 }
 
 .section__hero {
@@ -176,6 +195,35 @@ body::-webkit-scrollbar {
 
 .hint {
   padding-top: 1rem;
+}
+
+.section__signin {
+  margin-top: 10rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+.section__signin .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.section__signin .form__signin {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+.section__signin .form__signin .label-group {
+  display: block;
+}
+.section__signin .form__signin .input-group {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

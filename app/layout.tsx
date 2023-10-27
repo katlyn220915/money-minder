@@ -1,10 +1,12 @@
+"use client";
 import React, { ReactNode } from "react";
 import { Navbar } from "../components/index";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-export const metadata = {
-  title: "Money minder - 您的記帳小幫手",
-  description: "你今天記帳了嗎？快快來記帳！",
-};
+// export const metadata = {
+//   title: "Money minder - 您的記帳小幫手",
+//   description: "你今天記帳了嗎？快快來記帳！",
+// };
 
 //建立RootLayout的Props的interface
 interface RootLayoutProps {
@@ -37,7 +39,13 @@ const RootLayout: React.FC = ({ children }: RootLayoutProps) => {
         <link rel="icon" href="/favicon" />
       </head>
       <body>
-        <Navbar />
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/">首頁</Route>
+            <Route path="/signin">註冊</Route>
+          </Routes>
+        </BrowserRouter>
         {children}
       </body>
     </html>
