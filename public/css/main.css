@@ -112,6 +112,7 @@ body::-webkit-scrollbar {
 .btn__signin {
   display: inline-block;
   padding: 1rem 1.5rem;
+  align-self: center;
 }
 .btn__switch {
   padding: 1rem;
@@ -196,6 +197,10 @@ body::-webkit-scrollbar {
 .hint {
   padding-top: 1rem;
 }
+.hint__guide-to-login {
+  text-align: center;
+  font-size: 1.8rem;
+}
 
 .section__signin {
   margin-top: 10rem;
@@ -208,6 +213,9 @@ body::-webkit-scrollbar {
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+}
+.section__signin .successful__block {
+  padding: 4rem;
 }
 .section__signin .form__signin {
   display: flex;

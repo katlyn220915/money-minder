@@ -1,6 +1,5 @@
 "use client";
 import React, { ReactNode } from "react";
-import { Navbar } from "../components/index";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // export const metadata = {
@@ -40,7 +39,6 @@ const RootLayout: React.FC = ({ children }: RootLayoutProps) => {
       </head>
       <body>
         <BrowserRouter>
-          <Navbar />
           <Routes>
             <Route path="/">首頁</Route>
             <Route path="/signin">註冊</Route>

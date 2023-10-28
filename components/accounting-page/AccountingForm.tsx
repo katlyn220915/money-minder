@@ -11,6 +11,9 @@ const AccountingForm: React.FC<AccountingFormProps> = ({ onAddRecord }) => {
   const [isInputClicked, setIsInputClicked] = useState<boolean>(false);
   const [isNumber, setIsNumber] = useState<boolean>(true);
 
+  //把資料寫進對應使用者資料庫
+  
+
   const handleAddRecord = (
     e: React.MouseEvent<HTMLButtonElement>,
     bill: number
