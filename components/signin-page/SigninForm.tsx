@@ -27,7 +27,7 @@ const SiginForm: React.FC<SigninFormProps> = ({
 
   const handleSumit = (e) => {
     e.preventDefault();
-    if (userName === "") {
+    if (userName === "" && activeItem === "register") {
       handleLoginError("missing-userName");
       return;
     }

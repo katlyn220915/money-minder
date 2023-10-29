@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { ListItemProps } from "../types";
 import app from "../app/firebase";
 import { getAuth, User, onAuthStateChanged } from "firebase/auth";
-import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getFirestore,
+  setDoc,
+  getDocs,
+  query,
+  deleteDoc,
+  addDoc,
+} from "firebase/firestore";
 
 import {
   ButtonBackhome,
@@ -16,44 +25,83 @@ import {
 const AccountingPage: React.FC = () => {
   const [list, setList] = useState<ListItemProps[]>([]);
   const [totalAmount, setTotalAmount] = useState(0);
-  const auth = getAuth(app);
-  const [user, setUser] = useState<User | null>(null);
   const db = getFirestore(app);
-  let currentUserCollection: any;
-  React.useEffect(() => {
-    const loginState = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const auth = await getAuth(app);
+      onAuthStateChanged(auth, async (currentUser) => {
+        // currentUserCollection = collection(
+        //   db,
+        //   `user/${auth.currentUser.email}/list`
+        // );
+        const getList = await getBillList(currentUser.email);
+        setList(getList);
+        const newTotalAmount = getList.reduce((acc, currentItem) => {
+          return acc + Number(currentItem.bill);
+        }, 0);
+        setTotalAmount(newTotalAmount);
+      });
+    };
+    fetchData();
+  }, []);
+
+  const getBillList = async (email: string) => {
+    const q = query(collection(db, `user/${email}/list`));
+    const querySnapshot = await getDocs(q);
+    let list = [];
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+      const data = doc.data();
+      console.log(typeof data);
+      list.push(data);
     });
-    if (user !== null) {
-      currentUserCollection = collection(db, `user/${user.email}/list`);
-    }
-  });
+    return list;
+  };
 
-  const getBillList = (email: string) => {};
-
-  const handleAddRecord = (newItem: ListItemProps) => {
+  const handleAddRecord = async (newItem: ListItemProps) => {
     setList((prevList) => [...prevList, newItem]);
     setTotalAmount(totalAmount + Number(newItem.bill));
-
-    const listItem = doc(currentUserCollection, newItem.id.toString());
-    setDoc(listItem, {
+    const userEmail = await getUserEmail();
+    const listCollection = collection(db, `user/${userEmail}/list`);
+    const docRef = doc(listCollection, newItem.id.toString());
+    setDoc(docRef, {
+      id: newItem.id,
       bill: newItem.bill,
       description: newItem.description,
     })
       .then(() => {
-        console.log("資料儲存進資料庫");
+        console.log("成功");
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
+        console.log("失敗");
       });
   };
 
-  const handleDeleteItem = (id: number, bill: number) => {
+  async function getUserEmail() {
+    const auth = await getAuth(app);
+    const userEmail = await auth.currentUser.email;
+    return userEmail;
+  }
+
+  async function handleDeleteItem(id: number, bill: number) {
+    console.log(id);
+    const userEmail = await getUserEmail();
+    console.log(userEmail);
+    const docRef = doc(db, `/user/${userEmail}/list`, id.toString());
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("成功刪除");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     setList((preList) => preList.filter((list) => list.id !== id));
     if (totalAmount !== 0) {
       setTotalAmount(totalAmount - Number(bill));
     }
-  };
+  }
 
   return (
     <Layout>
