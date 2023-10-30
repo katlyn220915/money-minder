@@ -137,6 +137,9 @@ body::-webkit-scrollbar {
   text-align: center;
   border-bottom: 0.1rem solid #ddd;
 }
+.section__accounting .userName {
+  padding: 1rem;
+}
 .section__accounting .accounting__form__block {
   display: flex;
   justify-content: center;

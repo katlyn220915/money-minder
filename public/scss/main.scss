@@ -184,6 +184,10 @@ body {
   text-align: center;
   border-bottom: 0.1rem solid #ddd;
 
+  .userName {
+    padding: 1rem;
+  }
+
   .accounting__form {
     &__block {
       display: flex;

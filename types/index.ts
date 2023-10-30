@@ -4,6 +4,7 @@ export type AccountingFormProps = {
     bill: number;
     description: string;
   }) => void;
+  email: string;
 };
 
 export type ListItemProps = {

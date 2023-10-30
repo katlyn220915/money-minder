@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import "../../public/css/main.css";
 import { AccountingFormProps } from "../../types";
 
-const AccountingForm: React.FC<AccountingFormProps> = ({ onAddRecord }) => {
+const AccountingForm: React.FC<AccountingFormProps> = ({
+  email,
+  onAddRecord,
+}) => {
   const [expenseOrIncome, setExpenseOrIncome] = useState<string>("expense");
   const [bill, setBill] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
@@ -12,7 +15,6 @@ const AccountingForm: React.FC<AccountingFormProps> = ({ onAddRecord }) => {
   const [isNumber, setIsNumber] = useState<boolean>(true);
 
   //把資料寫進對應使用者資料庫
-  
 
   const handleAddRecord = (
     e: React.MouseEvent<HTMLButtonElement>,

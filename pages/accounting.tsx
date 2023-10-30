@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import { ListItemProps } from "../types";
 import app from "../app/firebase";
 import { getAuth, User, onAuthStateChanged } from "firebase/auth";
+import { redirect } from "react-router-dom";
 import {
   collection,
   doc,
@@ -11,7 +13,6 @@ import {
   getDocs,
   query,
   deleteDoc,
-  addDoc,
 } from "firebase/firestore";
 
 import {
@@ -25,22 +26,31 @@ import {
 const AccountingPage: React.FC = () => {
   const [list, setList] = useState<ListItemProps[]>([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [email, setEmail] = useState<string>("");
   const db = getFirestore(app);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       const auth = await getAuth(app);
+
       onAuthStateChanged(auth, async (currentUser) => {
-        // currentUserCollection = collection(
-        //   db,
-        //   `user/${auth.currentUser.email}/list`
-        // );
-        const getList = await getBillList(currentUser.email);
-        setList(getList);
-        const newTotalAmount = getList.reduce((acc, currentItem) => {
-          return acc + Number(currentItem.bill);
-        }, 0);
-        setTotalAmount(newTotalAmount);
+        if (currentUser === null) {
+          console.log("here");
+          router.push("/");
+          return;
+        }
+        try {
+          const getList = await getBillList(currentUser.email);
+          setList(getList);
+          setEmail(currentUser.email);
+          const newTotalAmount = getList.reduce((acc, currentItem) => {
+            return acc + Number(currentItem.bill);
+          }, 0);
+          setTotalAmount(newTotalAmount);
+        } catch {
+          redirect("/");
+        }
       });
     };
     fetchData();
@@ -111,7 +121,7 @@ const AccountingPage: React.FC = () => {
         <link rel="icon" href="/img/favicon.png"></link>
       </Head>
       <main>
-        <SectionAccounting onAddRecord={handleAddRecord} />
+        <SectionAccounting email={email} onAddRecord={handleAddRecord} />
         <BillList list={list} onDeleteItem={handleDeleteItem} />
         <Total totalAmount={totalAmount} />
         <ButtonBackhome>返回首頁</ButtonBackhome>
