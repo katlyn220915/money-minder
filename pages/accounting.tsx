@@ -41,13 +41,18 @@ const AccountingPage: React.FC = () => {
           return;
         }
         try {
-          const getList = await getBillList(currentUser.email);
-          setList(getList);
-          setEmail(currentUser.email);
-          const newTotalAmount = getList.reduce((acc, currentItem) => {
-            return acc + Number(currentItem.bill);
-          }, 0);
-          setTotalAmount(newTotalAmount);
+          if (currentUser.email !== null) {
+            const getList = await getBillList(currentUser.email);
+            setList(getList);
+            setEmail(currentUser.email);
+            const newTotalAmount = getList.reduce(
+              (acc, currentItem: object) => {
+                return acc + Number(currentItem["bill"]);
+              },
+              0
+            );
+            setTotalAmount(newTotalAmount);
+          }
         } catch {
           redirect("/");
         }
@@ -59,10 +64,10 @@ const AccountingPage: React.FC = () => {
   const getBillList = async (email: string) => {
     const q = query(collection(db, `user/${email}/list`));
     const querySnapshot = await getDocs(q);
-    let list = [];
+    let list: ListItemProps[] = [];
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
-      const data = doc.data();
+      const data = doc.data() as ListItemProps;
       console.log(typeof data);
       list.push(data);
     });
@@ -90,8 +95,10 @@ const AccountingPage: React.FC = () => {
 
   async function getUserEmail() {
     const auth = await getAuth(app);
-    const userEmail = await auth.currentUser.email;
-    return userEmail;
+    if (auth.currentUser !== null) {
+      const userEmail = await auth.currentUser.email;
+      return userEmail;
+    }
   }
 
   async function handleDeleteItem(id: number, bill: number) {
