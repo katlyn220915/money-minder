@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BtnStart, Hero, Navbar } from "../components/index";
 import app from "./firebase";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const auth = getAuth(app);
   const [user, setUser] = useState<User | null>(null);
   console.log(user);
-  React.useEffect(() => {
+  useEffect(() => {
     const loginState = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });

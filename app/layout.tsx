@@ -40,7 +40,6 @@ const RootLayout: React.FC = ({ children }: RootLayoutProps) => {
       <body>
         <BrowserRouter>
           <Routes>
-            <Route path="/">首頁</Route>
             <Route path="/signin">註冊</Route>
           </Routes>
         </BrowserRouter>
