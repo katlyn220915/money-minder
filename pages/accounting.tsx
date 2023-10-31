@@ -4,7 +4,6 @@ import Head from "next/head";
 import { ListItemProps } from "../types";
 import app from "../app/firebase";
 import { getAuth, User, onAuthStateChanged } from "firebase/auth";
-import { redirect } from "react-router-dom";
 import {
   collection,
   doc,
@@ -54,7 +53,8 @@ const AccountingPage: React.FC = () => {
             setTotalAmount(newTotalAmount);
           }
         } catch {
-          redirect("/");
+          router.push("/");
+          return;
         }
       });
     };

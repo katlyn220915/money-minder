@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["react", "react-dom", "react-router-dom"],
+    "types": ["react", "react-router-dom"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

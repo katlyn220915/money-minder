@@ -1,6 +1,4 @@
-"use client";
 import React, { ReactNode } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // export const metadata = {
 //   title: "Money minder - 您的記帳小幫手",
@@ -37,14 +35,7 @@ const RootLayout: React.FC = ({ children }: RootLayoutProps) => {
       <head>
         <link rel="icon" href="/favicon" />
       </head>
-      <body>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/signin">註冊</Route>
-          </Routes>
-        </BrowserRouter>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 };
