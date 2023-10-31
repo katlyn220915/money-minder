@@ -8,9 +8,7 @@ const Signin: React.FC = () => {
       <Head>
         <title>Money-minder 註冊、登入</title>
       </Head>
-      <SiginSection>
-        <SiginForm></SiginForm>
-      </SiginSection>
+      <SiginSection></SiginSection>
     </Layout>
   );
 };

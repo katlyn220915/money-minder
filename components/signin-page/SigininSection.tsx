@@ -1,13 +1,9 @@
 "use client";
 import { useState } from "react";
-import SiginForm from "./SigninForm";
+import SignForm from "./SigninForm";
 import BtnStart from "../homepage/BtnStart";
 
-interface SigninSectionProps {
-  children: React.ReactNode;
-}
-
-const SiginSection: React.FC<SigninSectionProps> = ({}) => {
+const SignSection: React.FC = ({}) => {
   const [activeItem, setActiveItem] = useState("register");
   const [isSuccessful, setIsSuccessful] = useState(false);
 
@@ -32,7 +28,7 @@ const SiginSection: React.FC<SigninSectionProps> = ({}) => {
       <h3 className="heading__tertiary">
         {activeItem === "register" ? "註冊會員" : "登入會員"}
       </h3>
-      <SiginForm
+      <SignForm
         activeItem={activeItem}
         status={isSuccessful}
         onSetState={handleRegisterState}
@@ -51,4 +47,4 @@ const SiginSection: React.FC<SigninSectionProps> = ({}) => {
   );
 };
 
-export default SiginSection;
+export default SignSection;
