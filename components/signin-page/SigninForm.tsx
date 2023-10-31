@@ -10,9 +10,9 @@ import {
 } from "firebase/auth";
 
 interface SigninFormProps {
-  activeItem: string;
-  status: boolean;
-  onSetState: (state: boolean) => void;
+  activeItem?: string;
+  status?: boolean;
+  onSetState?: (state: boolean) => void;
 }
 
 const SiginForm: React.FC<SigninFormProps> = ({
